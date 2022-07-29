@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:sqflite_practice/dbHelper.dart';
 import 'package:sqflite_practice/product.dart';

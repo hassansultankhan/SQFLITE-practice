@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'dbHelper.dart';
 import 'product_add.dart';
@@ -19,7 +17,7 @@ class _homeScreenState extends State<homeScreen> {
   void initState() {
     // TODO: implement initState
     getproducts();
-    // super.initState();
+    super.initState();
   }
   @override
   Widget build(BuildContext context) {
@@ -31,11 +29,7 @@ class _homeScreenState extends State<homeScreen> {
       ),
 
       body: buildProductList(),
-      
-      
-        
-        
-        
+
         floatingActionButton: FloatingActionButton(onPressed: (){productAddpage();},
         child: Icon(Icons.add),
         )
@@ -52,7 +46,7 @@ class _homeScreenState extends State<homeScreen> {
           return Card(
             child: ListTile(
               title: Text(this.Products[position].name,style: TextStyle(color: Colors.black),),
-              // subtitle: Text(int.parse(this.Products[position].id).toString()),  
+              subtitle: Text((this.Products[position].id).toString()),  
                 
               ),
             );
@@ -61,8 +55,6 @@ class _homeScreenState extends State<homeScreen> {
         }
         );
   }
-
-
 
   void productAddpage()async{
    bool result = await Navigator.push(context, MaterialPageRoute(builder: (context) => ProductAdd()));   

@@ -8,10 +8,13 @@ import 'package:path/path.dart';
 
 
 class DbHelper {
-  DbHelper._privateConstructor();
-  static final DbHelper instance = DbHelper._privateConstructor();
+  // DbHelper._privateConstructor();
+  // static final DbHelper instance = DbHelper._privateConstructor();
 
-  factory DbHelper() => instance;
+  // factory DbHelper() => instance;
+  // factory
+   DbHelper();
+  // => DbHelper._privateConstructor();
 
   static late Database _db;
 
@@ -25,8 +28,8 @@ class DbHelper {
     Directory documentDirectory = await getApplicationDocumentsDirectory();
     String path = await getDatabasesPath();
     String dbPath = join(await documentDirectory.path, "product.db");
-    var eTradeDb = await openDatabase(dbPath, version: 1, onCreate: createTable);
-    return eTradeDb;
+    var pny = await openDatabase(dbPath, version: 1, onCreate: createTable);
+    return pny;
   }
 
   // Creation of Tablle
@@ -42,19 +45,11 @@ class DbHelper {
   Future<List> getProducts() async {
     Database db = await this.db;
     //get all data from database without any filter
-    List<String> col = ['name' , 'unitPrice'];
+    // List<String> col = ['name' , 'id'];
 
-    var result = await db.query("products" , columns: col , where: "unitPrice > ? AND unitPrice < ?" , whereArgs: ['500' , '1000']);
+    var result = await db.query("products"); 
+    // , columns: col , where: "unitPrice > ? AND unitPrice < ?" , whereArgs: ['500' , '1000']);
     //return result;
-
-
-    // Another Method to fetch all product and generate list
-    // List<Product> allProdocuts = [];
-    // for(int i = 0 ; i < result.length ;i++){
-    //   Product temp = Product.fromKeyValue(result[i]);
-    //   allProdocuts.add(temp);
-    // }
-    // return allProdocuts;
 
 
     return List.generate(result.length, (i) {
