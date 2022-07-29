@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'homescreen.dart';
 
 void main() {
   runApp( MaterialApp(
@@ -19,6 +20,7 @@ void main() {
           brightness: Brightness.light,
   ),
   ),
+  home: homeScreen(),
   ),
   );
 }
